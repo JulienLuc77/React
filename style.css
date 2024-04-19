@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+  background-color: #202020
+}
+
+.loader-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content:end;
+  align-items:end;
+  background-color: #202020
+}
+
+.loader {
+  width: 80px;
+  height: 80px;
+  margin: 50px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: #fff;
+  font-size: 24px;
+}
+.paysage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-top: 40px;
+  object-position: 10% 80%;
+}
+.font{
+  font-family: Limelight;
+  color: #fff;
+  font-size: 14px;
+}
+.button {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 8px;
+  
+}
+.homepage {
+  width: 100%;
+  height: 100vh;
+}
+.write{
+  width: 300px;
+}
+
+.center-column {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+.subtitle {
+  display: flex;
+  justify-content: center;
+}
+.imageII{
+  margin-left: 5px;
+  margin-top: 100px;
+}
+h1 {
+  color: #fff;
+}
+
+.button {
+  margin: 10px;
+}
+
+.button a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 20px;
+  background-color: #000;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.button a:hover {
+  background-color: #444;
+}
+
+.background_image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-map {
+  margin-top: -600px;
+  width: 52%;
+  object-fit: cover;
+}
+.location-marker {
+  position: absolute;
+  width: 20px; /* Largeur du logo de localisation */
+  height: 20px; /* Hauteur du logo de localisation */
+  cursor: pointer; /* Curseur indiquant que le logo est cliquable */
+}
+
+/* Positionnement des logos de localisation */
+#location1 {
+  top: -200px; /* Position verticale du logo de localisation 1 */
+  left: 500px; /* Position horizontale du logo de localisation 1 */
+}
+
+#location2 {
+  top: -300px; /* Position verticale du logo de localisation 2 */
+  left: 700px; /* Position horizontale du logo de localisation 2 */
+}
+
+
+
