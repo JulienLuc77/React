@@ -130,6 +130,10 @@ function getLocationPositionRelativeToMap(location) {
 function zoomIn(location) {
     let scale = 1;
     const zoomInterval = setInterval(function() {
+      location1.style.display = "none";
+      location2.style.display = "none";
+      location3.style.display = "none";
+      location4.style.display = "none";
         scale += 0.1; // Augmente progressivement l'échelle de 0.1
         mapImage.style.transform = `scale(${scale})`;
 
@@ -179,21 +183,57 @@ function setLocationPosition(location, position) {
 
 // Fonction pour effectuer le dézoom progressif
 function zoomOut() {
-    let scale = 2;
-    const zoomInterval = setInterval(function() {
-        scale -= 0.1; // Diminue progressivement l'échelle de 0.1
-        mapImage.style.transform = `scale(${scale})`;
+ 
 
-        if (scale <= 1) { // Arrête l'animation une fois que le dézoom atteint 100%
-            clearInterval(zoomInterval);
-            // Cache le menu une fois le dézoom terminé
-            menu.style.opacity = "0";
-            menu.style.left = "-200px"; // Masque le menu à gauche de l'écran
-            // Masque le bouton de dézoom une fois que le dézoom est terminé
-            hideZoomOutButton();
-        }
-    }, 100); // Répète toutes les 100 millisecondes pour une transition plus fluide
+  let scale = 2;
+  const zoomInterval = setInterval(function() {
+      scale -= 0.1; // Diminue progressivement l'échelle de 0.1
+      mapImage.style.transform = `scale(${scale})`;
+      location1.style.display = "block";
+      location2.style.display = "block";
+      location3.style.display = "block";
+      location4.style.display = "block";
+      if (scale <= 1) { // Arrête l'animation une fois que le dézoom atteint 100%
+          clearInterval(zoomInterval);
+          // Cache le menu une fois le dézoom terminé
+          menu.style.opacity = "0";
+          menu.style.left = "-200px"; // Masque le menu à gauche de l'écran
+          // Masque le bouton de dézoom une fois que le dézoom est terminé
+          hideZoomOutButton();
+          // Affiche les logos de localisation une fois le dézoom terminé
+          location1.style.display = "block";
+          location2.style.display = "block";
+          location3.style.display = "block";
+          location4.style.display = "block";
+      }
+  }, 100); // Répète toutes les 100 millisecondes pour une transition plus fluide
 }
+
+// Ajoute des écouteurs d'événements pour les clics sur les logos de localisation
+location1.addEventListener("click", function(event) {
+  location1.style.position = "absolute"; // Empêche le logo de se déplacer pendant le zoom
+  zoomIn(event.target);
+});
+
+location2.addEventListener("click", function(event) {
+  location2.style.position = "absolute"; // Empêche le logo de se déplacer pendant le zoom
+  zoomIn(event.target);
+});
+
+location3.addEventListener("click", function(event) {
+  location3.style.position = "absolute"; // Empêche le logo de se déplacer pendant le zoom
+  zoomIn(event.target);
+});
+
+location4.addEventListener("click", function(event) {
+  location4.style.position = "absolute"; // Empêche le logo de se déplacer pendant le zoom
+  zoomIn(event.target);
+});
+
+// Ajoute un écouteur d'événements pour le clic sur le bouton de dézoom
+zoomOutButton.addEventListener("click", function() {
+  zoomOut();
+});
 
 // Fonction pour masquer le bouton de dézoom lorsque le zoom n'est pas en cours
 function hideZoomOutButton() {
