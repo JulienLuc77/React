@@ -116,11 +116,19 @@ h1 {
   top: -200px; /* Position verticale du logo de localisation 1 */
   left: 500px; /* Position horizontale du logo de localisation 1 */
 }
-
 #location2 {
   top: -300px; /* Position verticale du logo de localisation 2 */
   left: 700px; /* Position horizontale du logo de localisation 2 */
 }
-
-
+#location3 {
+  top: -180px; /* Position verticale du logo de localisation 2 */
+  left: 800px; /* Position horizontale du logo de localisation 2 */
+}
+#location4 {
+  top: -450px; /* Position verticale du logo de localisation 2 */
+  left: 600px; /* Position horizontale du logo de localisation 2 */
+}
+#zoomOutButton{
+  position: relative;
+}
 
