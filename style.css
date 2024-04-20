@@ -100,8 +100,8 @@ h1 {
   align-items: center;
 }
 .image-map {
-  margin-top: -600px;
-  width: 52%;
+  margin-top: -620px;
+  width: 55%;
   object-fit: cover;
 }
 .location-marker {
@@ -115,20 +115,52 @@ h1 {
 #location1 {
   top: -200px; /* Position verticale du logo de localisation 1 */
   left: 500px; /* Position horizontale du logo de localisation 1 */
+  font-size: x-large;
 }
 #location2 {
   top: -300px; /* Position verticale du logo de localisation 2 */
   left: 700px; /* Position horizontale du logo de localisation 2 */
+  font-size: x-large;
 }
 #location3 {
   top: -180px; /* Position verticale du logo de localisation 2 */
   left: 800px; /* Position horizontale du logo de localisation 2 */
+  font-size: x-large;
 }
 #location4 {
   top: -450px; /* Position verticale du logo de localisation 2 */
   left: 600px; /* Position horizontale du logo de localisation 2 */
+  font-size: x-large;
 }
 #zoomOutButton{
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
+.arrow {
+  font-size: xx-large;
 
+}
+#infoWindow {
+  display: none; /* Par défaut, masquer la fenêtre */
+  position: absolute;
+  background-color: #00000091;
+  left: 0;
+  margin-left: 30px;
+  top: -400px;
+  padding: 10px;
+  z-index: 999;
+  height: 100px;
+  width: 220px;
+  border-radius: 5px;
+  font-family: 'Rye';
+  color: #fff;
+}
+.textFrame{
+  border: 2px solid white;
+  height: 5px;
+}

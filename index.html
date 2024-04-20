@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Rye&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -36,15 +38,21 @@
     <div class="map_page" id="map_page">
       <div class="background_image">
         <img class="image-map" src="./images/map.jpg" alt="carte">
-        <button id="zoomOutButton">Dézoomer</button>
         <div class="location-marker" id="location1"><i class="fa-solid fa-location-dot" style="color: rgb(255, 59, 59);"></i></div>
+        <div>
+          <div id="infoWindow"></div>
+          <div class="textFrame">Informations</div>
+        </div>
         <div class="location-marker" id="location2"><i class="fa-solid fa-location-dot" style="color: rgb(255, 59, 59);"></i></div>
         <div class="location-marker" id="location3"><i class="fa-solid fa-location-dot" style="color: rgb(255, 59, 59);"></i></div>
         <div class="location-marker" id="location4"><i class="fa-solid fa-location-dot" style="color: rgb(255, 59, 59);"></i></div>
-
       </div>
+      <button id="zoomOutButton"><i class="fa-solid fa-arrow-left arrow" style="color: #000000;"></i></button>
     </div>
-  <script src="./index.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/loading.js"></script>
+  <script src="./js/location.js"></script>
+  <script src="./js/zoom.js"></script>
   <script src="https://kit.fontawesome.com/f96ca96193.js" crossorigin="anonymous"></script>
 </body>
 </html>

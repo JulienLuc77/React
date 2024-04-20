@@ -1,70 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const homepage = document.getElementById("homepage");
-  const loaderContainer = document.getElementById("loader-container");
-  const startPage = document.getElementById("map_page")
- 
-  function showHomePage() {
-    homepage.style.visibility = "visible";
-    homepage.style.opacity = "1";
-  }
-
-  function hideHomePage() {
-    homepage.style.visibility = "hidden";
-    homepage.style.opacity = "0";
-  }
-
-  function showLoader() {
-    loaderContainer.style.display = "flex";
-    loaderContainer.style.opacity = "1";
-  }
-
-  function hideLoader() {
-    loaderContainer.style.display = "none";
-    loaderContainer.style.opacity = "0";
-  }
-  function showMapPage() {
-    startPage.style.visibility = "visible";
-    document.body.style.backgroundColor = "#D4B690";
-    startPage.style.opacity = "1";
-  }
-  function hiddenMapPage () {
-    startPage.style.visibility = "hidden";
-    startPage.style.opacity = "0";
-  }
-  function restartLoading() {
-    hideHomePage();
-    hiddenMapPage();
-    showLoader();
-
-    // Simuler un chargement de 3 secondes
-    setTimeout(function() {
-      hideLoader();
-      showMapPage();
-    }, 3000);
-  }
-
-  // Fonction pour gérer l'événement de pression de la touche "x"
-  function handleKeyPress(event) {
-    if (event.key === "x" || event.key === "X") {
-      restartLoading();
-    }
-  }
-
-  // Écouteur d'événements pour détecter la pression de la touche "x"
-  document.addEventListener("keydown", handleKeyPress);
-
-  // Cacher la page d'accueil jusqu'à ce que le chargement soit terminé
-  hideHomePage();
-  hiddenMapPage();
-
-  // Démarrer le chargement initial
-  setTimeout(function() {
-    hideLoader();
-    hiddenMapPage();
-    showHomePage();
-  }, 5000);
-});
-
 const location1 = document.getElementById("location1");
 const location2 = document.getElementById("location2");
 const location3 = document.getElementById("location3");
@@ -73,26 +6,8 @@ const location4 = document.getElementById("location4");
 const mapImage = document.querySelector(".image-map");
 // Récupère l'élément du menu à afficher
 const menu = document.getElementById("menu");
-
-// Fonction pour effectuer le zoom progressif
-function zoomIn() {
-    let scale = 1;
-    const zoomInterval = setInterval(function() {
-        scale += 0.1; // Augmente progressivement l'échelle de 0.1
-        mapImage.style.transform = `scale(${scale})`;
-
-        if (scale >= 2) { // Arrête l'animation une fois que le zoom atteint 200%
-            clearInterval(zoomInterval);
-            // Affiche le menu une fois le zoom terminé
-            menu.style.opacity = "1";
-            menu.style.left = "20px"; // Révèle le menu à gauche de l'écran
-        }
-    }, 100); // Répète toutes les 100 millisecondes pour une transition plus fluide
-}
-
 // Ajoute des écouteurs d'événements pour les clics sur les logos de localisation
 location1.addEventListener("click", function() {
-  location1.style.position = "fixed";
     zoomIn();
 });
 
@@ -134,6 +49,7 @@ function zoomIn(location) {
       location2.style.display = "none";
       location3.style.display = "none";
       location4.style.display = "none";
+      zoomOutButton.style.display = "block";
         scale += 0.1; // Augmente progressivement l'échelle de 0.1
         mapImage.style.transform = `scale(${scale})`;
 
@@ -180,31 +96,21 @@ function setLocationPosition(location, position) {
     location.style.left = `${position.left}px`;
     location.style.top = `${position.top}px`;
 }
-
 // Fonction pour effectuer le dézoom progressif
 function zoomOut() {
- 
-
   let scale = 2;
   const zoomInterval = setInterval(function() {
       scale -= 0.1; // Diminue progressivement l'échelle de 0.1
       mapImage.style.transform = `scale(${scale})`;
-      location1.style.display = "block";
-      location2.style.display = "block";
-      location3.style.display = "block";
-      location4.style.display = "block";
+     
       if (scale <= 1) { // Arrête l'animation une fois que le dézoom atteint 100%
           clearInterval(zoomInterval);
-          // Cache le menu une fois le dézoom terminé
-          menu.style.opacity = "0";
-          menu.style.left = "-200px"; // Masque le menu à gauche de l'écran
-          // Masque le bouton de dézoom une fois que le dézoom est terminé
-          hideZoomOutButton();
-          // Affiche les logos de localisation une fois le dézoom terminé
           location1.style.display = "block";
           location2.style.display = "block";
           location3.style.display = "block";
           location4.style.display = "block";
+          // Masque le bouton de dézoom une fois que le dézoom est terminé
+          hideZoomOutButton();
       }
   }, 100); // Répète toutes les 100 millisecondes pour une transition plus fluide
 }
@@ -232,6 +138,7 @@ location4.addEventListener("click", function(event) {
 
 // Ajoute un écouteur d'événements pour le clic sur le bouton de dézoom
 zoomOutButton.addEventListener("click", function() {
+  zoomOutButton.style.display = "none";
   zoomOut();
 });
 
@@ -247,27 +154,6 @@ function showZoomOutButton() {
     zoomOutButton.style.top = "20px";
     zoomOutButton.style.left = "20px";
 }
-
-// Ajoute des écouteurs d'événements pour les clics sur les logos de localisation
-location1.addEventListener("click", function(event) {
-    location1.style.position = "absolute"; // Empêche le logo de se déplacer pendant le zoom
-    zoomIn(event.target);
-});
-
-location2.addEventListener("click", function(event) {
-    location2.style.position = "absolute"; // Empêche le logo de se déplacer pendant le zoom
-    zoomIn(event.target);
-});
-
-location3.addEventListener("click", function(event) {
-  location3.style.position = "absolute"; // Empêche le logo de se déplacer pendant le zoom
-  zoomIn(event.target);
-});
-
-location4.addEventListener("click", function(event) {
-  location4.style.position = "absolute"; // Empêche le logo de se déplacer pendant le zoom
-  zoomIn(event.target);
-});
 
 // Ajoute un écouteur d'événements pour le clic sur le bouton de dézoom
 zoomOutButton.addEventListener("click", function() {
