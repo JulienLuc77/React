@@ -1,51 +1,56 @@
-const locationsInfo = {
-  location1: "À PROPOS",
-  location2: "PROJETS",
-  location3: "SKILLS",
-  location4: "CONTACT"
-};
 const infoWindow = document.getElementById("infoWindow");
-function displayLocationInfo(locationId) {
-  infoWindow.textContent = locationsInfo[locationId];
-  infoWindow.style.display = "block";
+const locationImage = document.getElementById("locationImage");
+
+// Chemins d'images pour chaque emplacement
+const locationImages = {
+  location1: "./images/apropos.png",
+  location2: "./images/skills.png",
+  location3: "./images/projets.png",
+  location4: "./images/contact.png"
+};
+for (const locationId in locationImages) {
+  const img = new Image();
+  img.src = locationImages[locationId];
 }
 
-// Ajouter un écouteur d'événements pour le survol du logo de localisation
 location1.addEventListener("mouseenter", function() {
-    // Afficher la fenêtre au survol
-    infoWindow.style.display = "block";
-    displayLocationInfo("location1");
-});
-location2.addEventListener("mouseenter", function() {
-  // Afficher la fenêtre au survol
   infoWindow.style.display = "block";
-  displayLocationInfo("location2");
-});
-location3.addEventListener("mouseenter", function() {
-  // Afficher la fenêtre au survol
-  infoWindow.style.display = "block";
-  displayLocationInfo("location3");
-});
-location4.addEventListener("mouseenter", function() {
-  // Afficher la fenêtre au survol
-  infoWindow.style.display = "block";
-  displayLocationInfo("location4");
+  changeLocationImage("location1");
 });
 
-// Ajouter un écouteur d'événements pour le retrait du curseur du logo de localisation
+location2.addEventListener("mouseenter", function() {
+  infoWindow.style.display = "block";
+  changeLocationImage("location2");
+});
+
+location3.addEventListener("mouseenter", function() {
+  infoWindow.style.display = "block";
+  changeLocationImage("location3");
+});
+
+location4.addEventListener("mouseenter", function() {
+  infoWindow.style.display = "block";
+  changeLocationImage("location4");
+});
+
+// Fonction pour changer l'image en fonction de l'emplacement survolé
+function changeLocationImage(locationId) {
+  locationImage.src = locationImages[locationId];
+}
+
+// Ajouter des écouteurs d'événements pour le retrait du curseur du logo de localisation
 location1.addEventListener("mouseleave", function() {
-    // Masquer la fenêtre lorsque le curseur quitte le logo de localisation
-    infoWindow.style.display = "none";
+  infoWindow.style.display = "none";
 });
+
 location2.addEventListener("mouseleave", function() {
-  // Masquer la fenêtre lorsque le curseur quitte le logo de localisation
   infoWindow.style.display = "none";
 });
+
 location3.addEventListener("mouseleave", function() {
-  // Masquer la fenêtre lorsque le curseur quitte le logo de localisation
   infoWindow.style.display = "none";
 });
+
 location4.addEventListener("mouseleave", function() {
-  // Masquer la fenêtre lorsque le curseur quitte le logo de localisation
   infoWindow.style.display = "none";
 });
